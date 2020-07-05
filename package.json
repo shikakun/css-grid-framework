@@ -6,7 +6,7 @@
     "srcDir": "src"
   },
   "scripts": {
-    "build": "parcel build $npm_package_config_srcDir/index.html -d $npm_package_config_distDir",
+    "build": "parcel build $npm_package_config_srcDir/index.html -d $npm_package_config_distDir --public-url .",
     "clean": "rm -r $npm_package_config_distDir",
     "prebuild": "npm run clean",
     "start": "parcel $npm_package_config_srcDir/index.html -d $npm_package_config_distDir"
