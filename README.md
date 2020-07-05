@@ -9,6 +9,10 @@
 
 - `.grid` (Parent element)
     - `.-columns-[1-12]`
+    - `.-gap-full`
+    - `.-gap-half`
+    - `.-gap-third`
+    - `.-gap-empty`
     - `.-split`
     - `.-collapsible-full`
     - `.-collapsible-half`

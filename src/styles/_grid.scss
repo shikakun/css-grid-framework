@@ -35,6 +35,11 @@ $grid-collapsible-breakpoint-up: 600px !default;
   &.-columns-10 { @include grid-columns(10); }
   &.-columns-11 { @include grid-columns(11); }
   &.-columns-12 { @include grid-columns(12); }
+
+  &.-gap-full   { gap: $grid-gap;     }
+  &.-gap-half   { gap: $grid-gap / 2; }
+  &.-gap-fourth { gap: $grid-gap / 4; }
+  &.-gap-empty  { gap: 0;             }
 }
 
 .column {
