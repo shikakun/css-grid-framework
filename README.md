@@ -1,6 +1,6 @@
 # CSS Grid Framework
 
-- [Sass code](https://github.com/shikakun/src/styles/_grid.scss)
+- [Sass code](https://github.com/shikakun/css-grid-framework/blob/master/src/styles/_grid.scss)
 - [Demo page](https://shikakun.github.com/css-grid-framework/)
 
 ## API
