@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;700&display=swap');
+@import 'grid';
+
+:root {
+  color: #393c41;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+}
+
+body {
+  margin: 2rem;
+}
+
+header {
+  margin-bottom: 6rem;
+}
+
+section + section {
+  margin-top: 6rem;
+}
+
+h2 {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  background: #dbeeff;
+}
+
+.column {
+  position: relative;
+  min-height: 4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+  background: #2571b3;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: attr(data-class);
+  }
+
+  &.\@document-hidden-label::after {
+    display: none;
+  }
+}
+
+.grid  .grid {
+  background: #d9fcfc;
+
+  .column {
+    background: #2eb3b3;
+  }
+}
+
+textarea {
+  box-sizing: border-box;
+  display: block;
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  height: 20vh;
+  appearance: none;
+  color: inherit;
+  font-size: 1rem;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 1.5;
+  background: #edeef0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+}
+
+textarea + .grid {
+  margin-top: 6rem;
+}

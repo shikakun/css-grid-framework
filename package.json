@@ -1,0 +1,20 @@
+{
+  "name": "css-grid-framework",
+  "version": "0.1.0",
+  "config": {
+    "distDir": "docs",
+    "srcDir": "src"
+  },
+  "scripts": {
+    "build": "parcel build $npm_package_config_srcDir/index.html -d $npm_package_config_distDir",
+    "clean": "rm -r $npm_package_config_distDir",
+    "prebuild": "npm run clean",
+    "start": "parcel $npm_package_config_srcDir/index.html -d $npm_package_config_distDir"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.4",
+    "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^3.2.0",
+    "sass": "^1.26.9"
+  }
+}

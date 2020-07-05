@@ -1,0 +1,113 @@
+// Variables
+$grid-gap: 2rem !default;
+$grid-default-columns: 12 !default;
+$grid-default-column-span: 6 !default;
+$grid-collapsible-breakpoint-up: 600px !default;
+
+// Mixins
+@mixin grid-columns($number) {
+  grid-template-columns: repeat($number, 1fr);
+}
+
+@mixin column-span($number) {
+  grid-column-end: span $number;
+}
+
+@mixin column-pushed($number) {
+  grid-column-start: $number + 1;
+}
+
+// Assign
+.grid {
+  display: grid;
+  gap: $grid-gap;
+  @include grid-columns($grid-default-columns);
+
+  &.-columns-1  { @include grid-columns(1);  }
+  &.-columns-2  { @include grid-columns(2);  }
+  &.-columns-3  { @include grid-columns(3);  }
+  &.-columns-4  { @include grid-columns(4);  }
+  &.-columns-5  { @include grid-columns(5);  }
+  &.-columns-6  { @include grid-columns(6);  }
+  &.-columns-7  { @include grid-columns(7);  }
+  &.-columns-8  { @include grid-columns(8);  }
+  &.-columns-9  { @include grid-columns(9);  }
+  &.-columns-10 { @include grid-columns(10); }
+  &.-columns-11 { @include grid-columns(11); }
+  &.-columns-12 { @include grid-columns(12); }
+}
+
+.column {
+  display: block;
+  appearance: none;
+  @include column-span($grid-default-column-span);
+
+  &.-span-1  { @include column-span(1);  }
+  &.-span-2  { @include column-span(2);  }
+  &.-span-3  { @include column-span(3);  }
+  &.-span-4  { @include column-span(4);  }
+  &.-span-5  { @include column-span(5);  }
+  &.-span-6  { @include column-span(6);  }
+  &.-span-7  { @include column-span(7);  }
+  &.-span-8  { @include column-span(8);  }
+  &.-span-9  { @include column-span(9);  }
+  &.-span-10 { @include column-span(10); }
+  &.-span-11 { @include column-span(11); }
+  &.-span-12 { @include column-span(12); }
+
+  &.-pushed-1  { @include column-pushed(1);  }
+  &.-pushed-2  { @include column-pushed(2);  }
+  &.-pushed-3  { @include column-pushed(3);  }
+  &.-pushed-4  { @include column-pushed(4);  }
+  &.-pushed-5  { @include column-pushed(5);  }
+  &.-pushed-6  { @include column-pushed(6);  }
+  &.-pushed-7  { @include column-pushed(7);  }
+  &.-pushed-8  { @include column-pushed(8);  }
+  &.-pushed-9  { @include column-pushed(9);  }
+  &.-pushed-10 { @include column-pushed(10); }
+  &.-pushed-11 { @include column-pushed(11); }
+}
+
+.grid.-split .column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:first-child {
+    justify-content: flex-start;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
+  }
+}
+
+.grid.-collapsible-full {
+  @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
+    @include grid-columns(1);
+
+    .column {
+      @include column-span(1);
+    }
+  }
+}
+
+.grid.-collapsible-half {
+  @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
+    @include grid-columns(2);
+
+    .column {
+      @include column-span(1);
+    }
+  }
+}
+
+.grid.-collapsible-third {
+  @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
+    @include grid-columns(3);
+
+    .column {
+      @include column-span(1);
+    }
+  }
+}
