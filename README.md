@@ -11,7 +11,7 @@
     - `.-columns-[1-12]`
     - `.-gap-full`
     - `.-gap-half`
-    - `.-gap-third`
+    - `.-gap-fourth`
     - `.-gap-empty`
     - `.-split`
     - `.-collapsible-full`
