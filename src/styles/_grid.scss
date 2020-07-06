@@ -39,7 +39,7 @@ $grid-collapsible-breakpoint-up: 600px !default;
   &.-gap-full   { gap: $grid-gap;     }
   &.-gap-half   { gap: $grid-gap / 2; }
   &.-gap-fourth { gap: $grid-gap / 4; }
-  &.-gap-empty  { gap: 0;             }
+  &.-gap-none   { gap: 0;             }
 }
 
 .column {
