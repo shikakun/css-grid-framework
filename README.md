@@ -14,7 +14,7 @@
 
 - `.grid`
     - `.-columns-[1-12]`
-    - `.-gap-[(full|half|fourth|empty)]`
+    - `.-gap-[(full|half|fourth|none)]`
     - `.-split`
     - `.-collapsible-[(full|half|third)]`
 - `.column`
