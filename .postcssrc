@@ -1,7 +1,7 @@
 {
   "plugins": {
     "autoprefixer": {
-      "grid": true
+      "grid": "autoplace"
     }
   }
 }
