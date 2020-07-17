@@ -51,7 +51,7 @@ section h2 + .grid {
   margin-top: 2rem;
 }
 
-.column {
+.cell {
   position: relative;
   min-height: 4rem;
   overflow: hidden;
@@ -80,7 +80,7 @@ section h2 + .grid {
 .grid  .grid {
   background: #d9fcfc;
 
-  .column {
+  .cell {
     background: #2eb3b3;
   }
 }

@@ -7,8 +7,8 @@
 
 ```html
 <div class="grid">
-  <div class="column"></div>
-  <div class="column"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
 </div>
 ```
 
@@ -17,6 +17,6 @@
     - `.-gap-[(full|half|fourth|none)]`
     - `.-split`
     - `.-collapsible-[(full|half|third)]`
-- `.column`
+- `.cell`
     - `.-span-[1-12]`
     - `.-pushed-[1-11]`

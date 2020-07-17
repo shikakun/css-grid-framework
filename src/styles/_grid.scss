@@ -42,7 +42,7 @@ $grid-collapsible-breakpoint-up: 600px !default;
   &.-gap-none   { gap: 0;             }
 }
 
-.column {
+.cell {
   display: block;
   appearance: none;
   @include column-span($grid-default-column-span);
@@ -73,7 +73,7 @@ $grid-collapsible-breakpoint-up: 600px !default;
   &.-pushed-11 { @include column-pushed(11); }
 }
 
-.grid.-split .column {
+.grid.-split .cell {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +91,7 @@ $grid-collapsible-breakpoint-up: 600px !default;
   @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
     @include grid-columns(1);
 
-    .column {
+    .cell {
       @include column-span(1);
     }
   }
@@ -101,7 +101,7 @@ $grid-collapsible-breakpoint-up: 600px !default;
   @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
     @include grid-columns(2);
 
-    .column {
+    .cell {
       @include column-span(1);
     }
   }
@@ -111,7 +111,7 @@ $grid-collapsible-breakpoint-up: 600px !default;
   @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
     @include grid-columns(3);
 
-    .column {
+    .cell {
       @include column-span(1);
     }
   }
