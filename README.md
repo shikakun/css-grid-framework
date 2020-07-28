@@ -7,16 +7,19 @@
 
 ```html
 <div class="grid">
-  <div class="cell"></div>
-  <div class="cell"></div>
+  <div class="row">
+    <div class="column"></div>
+    <div class="column"></div>
+  </div>
 </div>
 ```
 
 - `.grid`
+- `.row`
     - `.-columns-[1-12]`
     - `.-gap-[(full|half|fourth|none)]`
     - `.-split`
     - `.-collapsible-[(full|half|third)]`
-- `.cell`
+- `.column`
     - `.-span-[1-12]`
     - `.-pushed-[1-11]`

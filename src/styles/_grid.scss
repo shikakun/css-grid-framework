@@ -1,79 +1,516 @@
 // Variables
 $grid-gap: 2rem !default;
 $grid-default-columns: 12 !default;
-$grid-default-column-span: 6 !default;
 $grid-collapsible-breakpoint-up: 600px !default;
 
+// Functions
+@function span-width($columns, $span) {
+  @return 100% / ($columns / $span);
+}
+
 // Mixins
-@mixin grid-columns($number) {
-  grid-template-columns: repeat($number, 1fr);
+@mixin column-width($columns: $grid-default-columns, $span: $grid-default-columns) {
+  width: span-width($columns, $span);
 }
 
-@mixin column-span($number) {
-  grid-column-end: span $number;
+@mixin column-pushed-margin($columns: $grid-default-columns, $span: $grid-default-columns, $gap: $grid-gap, $direction: ltr) {
+  $margin: span-width($columns, $span);
+
+  @if $direction == ltr {
+    margin-left: $margin;
+  }
+
+  @else if $direction == rtl {
+    margin-right: $margin;
+  }
 }
 
-@mixin column-pushed($number) {
-  grid-column-start: $number + 1;
-}
-
-// Assign
+// Styles
 .grid {
-  display: grid;
-  gap: $grid-gap;
-  @include grid-columns($grid-default-columns);
-
-  &.-columns-1  { @include grid-columns(1);  }
-  &.-columns-2  { @include grid-columns(2);  }
-  &.-columns-3  { @include grid-columns(3);  }
-  &.-columns-4  { @include grid-columns(4);  }
-  &.-columns-5  { @include grid-columns(5);  }
-  &.-columns-6  { @include grid-columns(6);  }
-  &.-columns-7  { @include grid-columns(7);  }
-  &.-columns-8  { @include grid-columns(8);  }
-  &.-columns-9  { @include grid-columns(9);  }
-  &.-columns-10 { @include grid-columns(10); }
-  &.-columns-11 { @include grid-columns(11); }
-  &.-columns-12 { @include grid-columns(12); }
-
-  &.-gap-full   { gap: $grid-gap;     }
-  &.-gap-half   { gap: $grid-gap / 2; }
-  &.-gap-fourth { gap: $grid-gap / 4; }
-  &.-gap-none   { gap: 0;             }
+  overflow: hidden;
 }
 
-.cell {
-  display: block;
-  appearance: none;
-  @include column-span($grid-default-column-span);
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 - $grid-gap / 2;
 
-  &.-span-1  { @include column-span(1);  }
-  &.-span-2  { @include column-span(2);  }
-  &.-span-3  { @include column-span(3);  }
-  &.-span-4  { @include column-span(4);  }
-  &.-span-5  { @include column-span(5);  }
-  &.-span-6  { @include column-span(6);  }
-  &.-span-7  { @include column-span(7);  }
-  &.-span-8  { @include column-span(8);  }
-  &.-span-9  { @include column-span(9);  }
-  &.-span-10 { @include column-span(10); }
-  &.-span-11 { @include column-span(11); }
-  &.-span-12 { @include column-span(12); }
+  & + .row {
+    margin-top: $grid-gap / 2;
+  }
 
-  &.-pushed-1  { @include column-pushed(1);  }
-  &.-pushed-2  { @include column-pushed(2);  }
-  &.-pushed-3  { @include column-pushed(3);  }
-  &.-pushed-4  { @include column-pushed(4);  }
-  &.-pushed-5  { @include column-pushed(5);  }
-  &.-pushed-6  { @include column-pushed(6);  }
-  &.-pushed-7  { @include column-pushed(7);  }
-  &.-pushed-8  { @include column-pushed(8);  }
-  &.-pushed-9  { @include column-pushed(9);  }
-  &.-pushed-10 { @include column-pushed(10); }
-  &.-pushed-11 { @include column-pushed(11); }
+  &.-gap-full {
+    margin: 0 - $grid-gap / 2;
+  }
+
+  &.-gap-half {
+    margin: 0 - $grid-gap / 4;
+  }
+
+  &.-gap-fourth {
+    margin: 0 - $grid-gap / 8;
+  }
+
+  &.-gap-none {
+    margin: 0;
+  }
 }
 
-.grid.-split .cell {
+.column {
+  box-sizing: border-box;
+  padding: $grid-gap / 2;
+  @include column-width;
+
+  &.-span-1 {
+    @include column-width($span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($span: 6);
+  }
+
+  &.-span-7 {
+    @include column-width($span: 7);
+  }
+
+  &.-span-8 {
+    @include column-width($span: 8);
+  }
+
+  &.-span-9 {
+    @include column-width($span: 9);
+  }
+
+  &.-span-10 {
+    @include column-width($span: 10);
+  }
+
+  &.-span-11 {
+    @include column-width($span: 11);
+  }
+
+  &.-span-12 {
+    @include column-width($span: 12);
+  }
+
+  &.-pushed-1 {
+    @include column-pushed-margin($span: 1);
+  }
+
+  &.-pushed-2 {
+    @include column-pushed-margin($span: 2);
+  }
+
+  &.-pushed-3 {
+    @include column-pushed-margin($span: 3);
+  }
+
+  &.-pushed-4 {
+    @include column-pushed-margin($span: 4);
+  }
+
+  &.-pushed-5 {
+    @include column-pushed-margin($span: 5);
+  }
+
+  &.-pushed-6 {
+    @include column-pushed-margin($span: 6);
+  }
+
+  &.-pushed-7 {
+    @include column-pushed-margin($span: 7);
+  }
+
+  &.-pushed-8 {
+    @include column-pushed-margin($span: 8);
+  }
+
+  &.-pushed-9 {
+    @include column-pushed-margin($span: 9);
+  }
+
+  &.-pushed-10 {
+    @include column-pushed-margin($span: 10);
+  }
+
+  &.-pushed-11 {
+    @include column-pushed-margin($span: 11);
+  }
+}
+
+.row.-columns-1 .column {
+  @include column-width($columns: 1, $span: 1);
+}
+
+.row.-columns-2 .column {
+  @include column-width($columns: 2, $span: 2);
+
+  &.-span-1 {
+    @include column-width($columns: 2, $span: 1);
+  }
+}
+
+.row.-columns-3 .column {
+  @include column-width($columns: 3, $span: 3);
+
+  &.-span-1 {
+    @include column-width($columns: 3, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 3, $span: 2);
+  }
+}
+
+.row.-columns-4 .column {
+  @include column-width($columns: 4, $span: 4);
+
+  &.-span-1 {
+    @include column-width($columns: 4, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 4, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 4, $span: 3);
+  }
+}
+
+.row.-columns-5 .column {
+  @include column-width($columns: 5, $span: 5);
+
+  &.-span-1 {
+    @include column-width($columns: 5, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 5, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 5, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 5, $span: 4);
+  }
+}
+
+.row.-columns-6 .column {
+  @include column-width($columns: 6, $span: 6);
+
+  &.-span-1 {
+    @include column-width($columns: 6, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 6, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 6, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 6, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 6, $span: 5);
+  }
+}
+
+.row.-columns-7 .column {
+  @include column-width($columns: 7, $span: 7);
+
+  &.-span-1 {
+    @include column-width($columns: 7, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 7, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 7, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 7, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 7, $span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($columns: 7, $span: 6);
+  }
+}
+
+.row.-columns-8 .column {
+  @include column-width($columns: 8, $span: 8);
+
+  &.-span-1 {
+    @include column-width($columns: 8, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 8, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 8, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 8, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 8, $span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($columns: 8, $span: 6);
+  }
+
+  &.-span-7 {
+    @include column-width($columns: 8, $span: 7);
+  }
+}
+
+.row.-columns-9 .column {
+  @include column-width($columns: 9, $span: 9);
+
+  &.-span-1 {
+    @include column-width($columns: 9, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 9, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 9, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 9, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 9, $span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($columns: 9, $span: 6);
+  }
+
+  &.-span-7 {
+    @include column-width($columns: 9, $span: 7);
+  }
+
+  &.-span-8 {
+    @include column-width($columns: 9, $span: 8);
+  }
+}
+
+.row.-columns-10 .column {
+  @include column-width($columns: 10, $span: 10);
+
+  &.-span-1 {
+    @include column-width($columns: 10, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 10, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 10, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 10, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 10, $span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($columns: 10, $span: 6);
+  }
+
+  &.-span-7 {
+    @include column-width($columns: 10, $span: 7);
+  }
+
+  &.-span-8 {
+    @include column-width($columns: 10, $span: 8);
+  }
+
+  &.-span-9 {
+    @include column-width($columns: 10, $span: 9);
+  }
+}
+
+.row.-columns-11 .column {
+  @include column-width($columns: 11, $span: 11);
+
+  &.-span-1 {
+    @include column-width($columns: 11, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 11, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 11, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 11, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 11, $span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($columns: 11, $span: 6);
+  }
+
+  &.-span-7 {
+    @include column-width($columns: 11, $span: 7);
+  }
+
+  &.-span-8 {
+    @include column-width($columns: 11, $span: 8);
+  }
+
+  &.-span-9 {
+    @include column-width($columns: 11, $span: 9);
+  }
+
+  &.-span-10 {
+    @include column-width($columns: 11, $span: 10);
+  }
+}
+
+.row.-columns-12 .column {
+  @include column-width($columns: 12, $span: 12);
+
+  &.-span-1 {
+    @include column-width($columns: 12, $span: 1);
+  }
+
+  &.-span-2 {
+    @include column-width($columns: 12, $span: 2);
+  }
+
+  &.-span-3 {
+    @include column-width($columns: 12, $span: 3);
+  }
+
+  &.-span-4 {
+    @include column-width($columns: 12, $span: 4);
+  }
+
+  &.-span-5 {
+    @include column-width($columns: 12, $span: 5);
+  }
+
+  &.-span-6 {
+    @include column-width($columns: 12, $span: 6);
+  }
+
+  &.-span-7 {
+    @include column-width($columns: 12, $span: 7);
+  }
+
+  &.-span-8 {
+    @include column-width($columns: 12, $span: 8);
+  }
+
+  &.-span-9 {
+    @include column-width($columns: 12, $span: 9);
+  }
+
+  &.-span-10 {
+    @include column-width($columns: 12, $span: 10);
+  }
+
+  &.-span-11 {
+    @include column-width($columns: 12, $span: 11);
+  }
+}
+
+.row.-gap-full .column {
+  padding: $grid-gap / 2;
+}
+
+.row.-gap-half .column {
+  padding: $grid-gap / 4;
+}
+
+.row.-gap-fourth .column {
+  padding: $grid-gap / 8;
+}
+
+.row.-gap-none .column {
+  padding: 0;
+}
+
+.row.-columns-2 .column.-pushed-1 {
+  @include column-pushed-margin($columns: 2, $span: 1);
+}
+
+.row.-columns-3 .column {
+  &.-pushed-1 {
+    @include column-pushed-margin($columns: 3, $span: 1);
+  }
+
+  &.-pushed-2 {
+    @include column-pushed-margin($columns: 3, $span: 2);
+  }
+}
+
+.row.-columns-4 .column {
+  &.-pushed-1 {
+    @include column-pushed-margin($columns: 4, $span: 1);
+  }
+
+  &.-pushed-2 {
+    @include column-pushed-margin($columns: 4, $span: 2);
+  }
+
+  &.-pushed-3 {
+    @include column-pushed-margin($columns: 4, $span: 3);
+  }
+}
+
+.row.-split .column {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,32 +524,20 @@ $grid-collapsible-breakpoint-up: 600px !default;
   }
 }
 
-.grid.-collapsible-full {
+.row.-collapsible-full .column {
   @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
-    @include grid-columns(1);
-
-    .cell {
-      @include column-span(1);
-    }
+    @include column-width($columns: 1, $span: 1);
   }
 }
 
-.grid.-collapsible-half {
+.row.-collapsible-half .column {
   @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
-    @include grid-columns(2);
-
-    .cell {
-      @include column-span(1);
-    }
+    @include column-width($columns: 2, $span: 1);
   }
 }
 
-.grid.-collapsible-third {
+.row.-collapsible-third .column {
   @media (max-width: $grid-collapsible-breakpoint-up - 1px) {
-    @include grid-columns(3);
-
-    .cell {
-      @include column-span(1);
-    }
+    @include column-width($columns: 3, $span: 1);
   }
 }
